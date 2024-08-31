@@ -1,6 +1,7 @@
 import time
 import random
 from openai import OpenAI
+import env
 
 # Global variable to store chat history
 chat_history = [{"role": "assistant", "content": "Hello. I am Roohi, receptionist of Dr. Adrin. How may I assist you today?"}]
