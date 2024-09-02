@@ -132,8 +132,8 @@ async def handle_emergency(user_input):
         instructions = await query_task  # Wait for the query to complete
     # print("Elapsed time = ",time.time()-start_time)
     print(call_gpt(user_input, f"""Tell the user the doctor will arrive soon. Provide the instructions to the user based on this criteria:
-                    1. If the user is seems to be satisfied with the time, just provide the instructions in a proper format. Don't add anything else and just provide the instructions.
-                    2. If the user is concerened about the doctor's arrival time , reply 'I understand that you are worried that Dr. Adrin will arrive too late. Meanwhile, we suggest that you..."
+                    1. If the user is seems to be satisfied with the time, reply with "Don’t worry, please follow these steps, Dr. Adrin will be with you shortly” and provide the instructions in a proper format. Don't add anything else and just provide the instructions.
+                    2. If the user is concerened about the doctor's arrival time, reply with "I understand that you are worried that Dr. Adrin will arrive too late. Meanwhile, we suggest that you to follow the instructions" and provide the instructions in a proper format.
 
                     The instructions are:
                     {instructions}
