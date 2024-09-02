@@ -21,7 +21,7 @@ def detect_intent(user_input):
     client = OpenAI()
     response = client.chat.completions.create(
       model="gpt-4o",
-      messages=[i{"role": "system", "content": """
+      messages=[{"role": "system", "content": """
                     Detect the intent from the user input and provide one word intent. Don't add anything.
                     The intent can be only from the below list:
                     "intent_list": [
