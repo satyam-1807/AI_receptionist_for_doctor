@@ -11,13 +11,17 @@ import env
 chat_history = [{"role": "system", "content": "You are a receptionist of Dr. Adrin."},
                 {"role": "assistant", "content": "Hello. I am Roohi, receptionist of Dr. Adrin. How may I assist you today?"}]
 
+qdrant_client = QdrantClient(
+    url="add67a69-43d5-4bd9-b72b-194eba28b90a.europe-west3-0.gcp.cloud.qdrant.io:6333",
+    api_key="AfCEWmPdM17JABsezQ45-ANIze_GvAf95vGv57dtpHaSpsZcDP-5ng",
+)
 
-
+# Function to initialize and call GPT-4 with chat history
 def detect_intent(user_input):
     client = OpenAI()
     response = client.chat.completions.create(
       model="gpt-4o",
-      messages=[{"role": "system", "content": """
+      messages=[i{"role": "system", "content": """
                     Detect the intent from the user input and provide one word intent. Don't add anything.
                     The intent can be only from the below list:
                     "intent_list": [
@@ -64,7 +68,7 @@ async def query_qdrant(query_text):
     await asyncio.sleep(15)  # Artificial delay of 15 seconds
     response = qdrant_client.search(
         collection_name="default",
-        query_vector=vectorize_query(query_text), 
+        query_vector=vectorize_query(query_text),  # This would be a vectorized representation of your query
         limit=1  # Get the top result
     )
     if response:
